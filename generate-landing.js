@@ -347,6 +347,7 @@ const searchIndexProducts = products.map(p => ({
   type: 'product',
   category: categorize(p.slug),
   price: p.price,
-  url: `produto/${p.slug}.html`
+  url: `produto/${p.slug}.html`,
+  image: p.image || ''
 }));
 fs.writeFileSync(path.join(__dirname, 'search-index-products.json'), JSON.stringify(searchIndexProducts));
