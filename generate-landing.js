@@ -65,23 +65,21 @@ products.forEach(p => {
 });
 
 // Generate category nav buttons
+const navCategories = ['Educação Infantil', 'Ensino Fundamental I', 'Ensino Fundamental II', 'Ensino Médio'];
+const navLabels = { 'Ensino Fundamental I': 'Fundamental I', 'Ensino Fundamental II': 'Fundamental II' };
+
 function generateCatNav() {
-  const categoriesHtml = catOrder.filter(c => categories[c] && categories[c].length > 0).map(cat => {
+  return navCategories.filter(c => categories[c] && categories[c].length > 0).map(cat => {
     const colors = catColors[cat];
     const icon = catIcons[cat];
+    const label = navLabels[cat] || cat;
     const id = cat.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, '-').toLowerCase();
     return `<a href="#${id}" rel="dofollow" class="cat-btn" style="background: ${colors.gradient}">
               <span class="cat-icon">${icon}</span>
-              <span class="cat-name">${cat}</span>
+              <span class="cat-name">${label}</span>
               <span class="cat-count">${categories[cat].length}</span>
             </a>`;
   }).join('\n            ');
-
-  return categoriesHtml + `
-            <a href="artigos/index.html" rel="dofollow" class="cat-btn" style="background: linear-gradient(135deg, #4F46E5, #3730A3)">
-              <span class="cat-icon">📰</span>
-              <span class="cat-name">Artigos e Dicas</span>
-            </a>`;
 }
 
 // Helper to strip HTML for Node.js
