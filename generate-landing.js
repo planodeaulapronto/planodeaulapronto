@@ -172,8 +172,16 @@ let html = '<!DOCTYPE html>\n<html lang="pt-BR">\n<head>\n' +
   '    .hero-stats { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }\n' +
   '    .stat-number { font-family: \'Outfit\', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--accent); }\n' +
   '    .stat-label { color: rgba(255,255,255,0.6); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }\n' +
-  '    .cat-nav { background: white; padding: 12px 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.06); border-bottom: 1px solid #edf2f7; }\n' +
+  '    .cat-nav { background: white; padding: 8px 12px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.06); border-bottom: 1px solid #edf2f7; }\n' +
   '    .cat-nav-inner { max-width: 1400px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }\n' +
+  '    @media (max-width: 768px) {\n' +
+  '      .cat-nav { padding: 6px 8px; }\n' +
+  '      .cat-nav-inner { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; gap: 6px; }\n' +
+  '      .cat-nav-inner::-webkit-scrollbar { display: none; }\n' +
+  '      .cat-nav .cat-btn { white-space: nowrap; padding: 6px 12px; font-size: 0.7rem; flex-shrink: 0; }\n' +
+  '      .cat-nav .cat-icon { font-size: 0.85rem; }\n' +
+  '      .cat-nav .cat-count { font-size: 0.6rem; }\n' +
+  '    }\n' +
   '    .cat-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 50px; color: white; text-decoration: none; font-size: 0.8rem; font-weight: 700; transition: all 0.3s; }\n' +
   '    .cat-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.15); }\n' +
   '    .cat-icon { font-size: 1rem; }\n' +
