@@ -17,6 +17,8 @@ O site `https://planodeaulapronto.github.io/` e um portal estatico no GitHub Pag
 
 - Artigos nao devem apontar para dominios externos antigos.
 - Links externos permitidos nos CTAs: `https://www.aulagen.com.br/`.
+- Produtos sao excecao: paginas em `/produto/*.html` e `/produtos/*.html` devem preservar os links de afiliado Hotmart corretos de cada produto.
+- Nunca substituir `hotmartLink`, `Offer.url` ou `buy-btn-large` de produto por AulaGen.
 - Links internos devem priorizar:
   - Home: `https://planodeaulapronto.github.io/`
   - Artigos: `/artigos/`
@@ -60,10 +62,15 @@ O site `https://planodeaulapronto.github.io/` e um portal estatico no GitHub Pag
 
 ### Produtos
 
-- Injetado banner sticky AulaGen em `/produto/*.html` e `/produtos/*.html`.
+- Banner AulaGen removido das paginas de produto para nao concorrer com a venda dos materiais.
+- Restaurados os links Hotmart corretos dos 219 produtos no `products.json`.
+- Restaurados os links Hotmart corretos em 438 paginas HTML de produto:
+  - `/produto/*.html`
+  - `/produtos/*.html`
+- Restaurados `Offer.url` e `buy-btn-large` usando o historico Git exato de cada arquivo/produto.
 - Corrigido bug visual do SVG/WhatsApp gigante com CSS de seguranca:
   - `svg:not([width]):not([height]) { max-width:24px; max-height:24px; }`
-- Mantida estrutura de paginas de produto com CTA principal.
+- Mantida estrutura de paginas de produto com CTA principal para compra via Hotmart.
 
 ### Concursos por cidade
 
@@ -104,7 +111,9 @@ O site `https://planodeaulapronto.github.io/` e um portal estatico no GitHub Pag
 - `build_cidades.py`
   - Gera paginas programaticas de concursos por cidade.
 - `inject_banner.py`
-  - Injeta banner sticky AulaGen em artigos, produtos, home, mapa e paginas de cidade/concurso.
+  - Injeta banner sticky AulaGen em artigos, home, mapa e paginas de cidade/concurso.
+  - Nao injeta banner em produtos para preservar o funil Hotmart.
+  - Tambem corrige SVGs sem `width`/`height`.
 
 ## Fluxo recomendado de manutencao
 
@@ -124,8 +133,16 @@ git status --short
 (Select-String -Path sitemap.xml -Pattern '<loc>' | Measure-Object).Count
 Select-String -Path index.html -Pattern 'AULAGEN-STICKY-BANNER'
 Select-String -Path artigos\aula-sobre-racismo-como-abordar-o-tema-na-educacao.html -Pattern 'AULAGEN-STICKY-BANNER'
-Select-String -Path produto\plano-de-aula-fisica-ensino-medio.html -Pattern 'svg-bugfix|AULAGEN-STICKY-BANNER'
+Select-String -Path produto\plano-de-aula-fisica-ensino-medio.html -Pattern 'go.hotmart.com|buy-btn-large|svg-bugfix'
 Select-String -Path sao-paulo\concurso-professor.html -Pattern 'AULAGEN-STICKY-BANNER'
+```
+
+Validacao critica dos produtos:
+
+```powershell
+Select-String -Path products.json -Pattern 'go.hotmart.com' | Measure-Object
+Select-String -Path produto\*.html,produtos\*.html -Pattern 'class="buy-btn-large"' | Measure-Object
+Select-String -Path produto\*.html,produtos\*.html -Pattern 'href="https://www.aulagen.com.br/"' | Measure-Object
 ```
 
 ## Deploy
