@@ -2,6 +2,3 @@ User-agent: *
 Allow: /
 
 Sitemap: https://planodeaulapronto.github.io/sitemap.xml
-
-# Materiais Pedagogicos BNCC 2026
-# Plano de Aula, Atividades, Avaliacoes e Slides
