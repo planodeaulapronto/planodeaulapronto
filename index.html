@@ -7,7 +7,7 @@
   <meta name="description" content="Plano de Aula Pronto BNCC 2026. Baixe plano de aula diário, semanal, bimestral e anual, editável em Word e PDF para imprimir. Materiais completos de acordo com a BNCC para todos os anos.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://planodeaulapronto.github.io/">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://planodeaulapronto.github.io/" rel="stylesheet">
   <style>
     :root {
       --primary: #6C63FF; --primary-dark: #5A52E0; --secondary: #FF6B9D; --accent: #00D4AA;
@@ -84,21 +84,22 @@
   </style>
 </head>
 <body>
-<!-- TOP-AULAGEN-BANNER start -->
-<div id="aulagen-banner" style="background:linear-gradient(135deg,#4F46E5 0%,#7c3aed 50%,#ec4899 100%);color:#fff;padding:14px 20px;position:relative;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,.15)">
-  <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap">
-    <div style="display:flex;align-items:center;gap:14px;flex:1;min-width:280px">
-      <div style="background:rgba(255,255,255,.2);width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0">🤖</div>
-      <div style="line-height:1.35">
-        <div style="font-weight:800;font-size:1.02rem">AulaGen — IA para Professores</div>
-        <div style="font-size:.86rem;opacity:.92">50+ ferramentas de IA: planos de aula, provas, atividades adaptadas e jogos prontos em minutos, alinhados à BNCC.</div>
+<!-- AULAGEN-STICKY-BANNER start -->
+<div id="aulagen-sticky-banner" style="background:linear-gradient(135deg,#4F46E5 0%,#7c3aed 50%,#ec4899 100%);color:#fff;padding:12px 18px;position:sticky;top:0;z-index:9999;box-shadow:0 2px 14px rgba(0,0,0,.2);font-family:system-ui,sans-serif">
+  <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+    <div style="display:flex;align-items:center;gap:12px;flex:1;min-width:260px">
+      <div style="background:rgba(255,255,255,.2);width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0">🤖</div>
+      <div style="line-height:1.3">
+        <div style="font-weight:800;font-size:.98rem">AulaGen — IA para Professores</div>
+        <div style="font-size:.82rem;opacity:.92">50+ ferramentas IA: planos, provas, atividades adaptadas e simulados de concursos.</div>
       </div>
     </div>
-    <a href="https://www.aulagen.com.br/" target="_blank" rel="noopener" style="background:#fff;color:#4F46E5;padding:11px 22px;border-radius:8px;font-weight:800;text-decoration:none;font-size:.92rem;white-space:nowrap;box-shadow:0 4px 12px rgba(0,0,0,.15);flex-shrink:0">Conhecer o AulaGen →</a>
+    <a href="https://www.aulagen.com.br/" target="_blank" rel="noopener" style="background:#fff;color:#4F46E5;padding:9px 18px;border-radius:7px;font-weight:800;text-decoration:none;font-size:.86rem;white-space:nowrap;box-shadow:0 4px 10px rgba(0,0,0,.15);flex-shrink:0">Conhecer &rarr;</a>
   </div>
 </div>
-<!-- TOP-AULAGEN-BANNER end -->
-  <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+<!-- AULAGEN-STICKY-BANNER end -->
+
+<button class="hamburger" id="hamburgerBtn" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
   <div class="side-menu-overlay" id="sideMenuOverlay"></div>
@@ -135,6 +136,16 @@
       </div>
     </div>
   </header>
+  <!-- HOME-QUICK-LINKS start -->
+  <section id="atalhos-principais" style="background:#fff;border-bottom:1px solid #e5e7eb;padding:18px 20px">
+    <div style="max-width:1100px;margin:0 auto;display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:center">
+      <a href="artigos/index.html" style="display:inline-flex;align-items:center;gap:8px;background:#4F46E5;color:#fff;padding:12px 18px;border-radius:8px;font-weight:800;text-decoration:none;font-size:.95rem">Artigos e dicas para professores</a>
+      <a href="#blog-artigos" style="display:inline-flex;align-items:center;gap:8px;background:#eef2ff;color:#4F46E5;padding:12px 18px;border-radius:8px;font-weight:800;text-decoration:none;font-size:.95rem">Ver lista de artigos</a>
+      <a href="cidades/index.html" style="display:inline-flex;align-items:center;gap:8px;background:#fdf2f8;color:#be185d;padding:12px 18px;border-radius:8px;font-weight:800;text-decoration:none;font-size:.95rem">Concursos por cidade</a>
+      <a href="https://www.aulagen.com.br/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#111827;color:#fff;padding:12px 18px;border-radius:8px;font-weight:800;text-decoration:none;font-size:.95rem">AulaGen IA</a>
+    </div>
+  </section>
+  <!-- HOME-QUICK-LINKS end -->
   <nav class="cat-nav">
     <div class="cat-nav-inner"><a href="#educacao-infantil" rel="dofollow" class="cat-btn" style="background: linear-gradient(135deg, #FF6B9D, #E91E63)">
               <span class="cat-icon">🧒</span>

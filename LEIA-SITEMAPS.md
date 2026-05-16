@@ -69,7 +69,7 @@ Se abrir o XML normalmente, os arquivos estão OK. O problema é do Google Searc
 
 ### Como Reenviar no Google Search Console
 
-1. Vá em [Google Search Console > Sitemaps](https://search.google.com/search-console/sitemaps)
+1. Vá em [Google Search Console > Sitemaps](https://planodeaulapronto.github.io/)
 2. **Delete** todos os sitemaps antigos (com e sem `?v=3`)
 3. Adicione **apenas 1** sitemap: `sitemap.xml`  
    (O Google seguirá automaticamente os links internos para `sitemap-produtos.xml` e `sitemap-artigos.xml`)

@@ -45,7 +45,7 @@ Língua Portuguesa, Matemática, Física, Química, Biologia, História, Geograf
 
 ### 🚀 Atualização Março 2026: Mega SEO & Conversion Update
 - **Descrições Ricas**: Todos os 219 produtos agora possuem descrições detalhadas (+800 palavras) otimizadas para SEO, eliminando o problema de "thin content".
-- **Autoridade de Domínio**: Implementação de links `dofollow` apontando diretamente para o domínio principal `diariodaeducacao.com.br`, transferindo autoridade e fortalecendo o rankeamento oficial.
+- **Autoridade de Domínio**: Implementação de links `dofollow` apontando diretamente para o domínio principal `planodeaulapronto.github.io`, transferindo autoridade e fortalecendo o rankeamento oficial.
 - **UX Otimizada**:
   - Botão de compra gigante e animado para maior conversão.
   - Navegação de categorias simplificada na homepage.

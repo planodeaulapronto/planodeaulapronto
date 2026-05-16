@@ -2,7 +2,7 @@ const https = require('https');
 const fs = require('fs');
 const path = require('path');
 
-const BASE_URL = 'https://diariodaeducacao.com.br';
+const BASE_URL = 'https://planodeaulapronto.github.io';
 const PRODUCTS_FILE = path.join(__dirname, 'products.json');
 
 function fetch(url, retries = 3) {

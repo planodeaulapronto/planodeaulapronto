@@ -6,7 +6,7 @@ const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
 
 // Replace all local image paths (images/slug.ext) with public URLs
 const canvaHtml = html.replace(/src="images\/([^"]+)"/g, (match, filename) => {
-    return `src="https://diariodaeducacao.com.br/images/produtos-bncc/${filename}"`;
+    return `src="../images/${filename}"`;
 });
 
 // Create canva directory

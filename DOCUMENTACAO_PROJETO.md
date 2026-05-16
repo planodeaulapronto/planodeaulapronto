@@ -34,7 +34,7 @@ A implementação seguiu os mais altos padrões do Google para 2026:
 
 ### B. Linkagem "Dofollow":
 - 100% dos links (internos e externos) utilizam `rel="dofollow"`.
-- Isso garante que a autoridade (link equity) flua livremente entre a Home, os Artigos e o domínio principal (Diário da Educação), fortalecendo todo o ecossistema.
+- Isso garante que a autoridade (link equity) flua livremente entre a Home, os Artigos e o domínio principal (Plano de Aula Pronto), fortalecendo todo o ecossistema.
 
 ### C. Conteúdo Anti-Thin Content:
 - **Artigos**: Média de 600-1000 palavras de conteúdo pedagógico puro + 600 palavras de estrutura. Totalizando ~1.200 a 1.500 termos por página.

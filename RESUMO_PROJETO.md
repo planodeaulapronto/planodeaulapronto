@@ -42,5 +42,5 @@ Este documento resume as solicitações do usuário e o progresso atual para con
 
 ## Detalhes Técnicos
 *   **Node.js**: Localizado em `C:\Users\plantao\Documents\buch\agilzap\servidor\node-local\node.exe`.
-*   **Base URL**: `https://planodeaulapronto.github.io`.
+*   **Base URL**: `https://planodeaulapronto.github.io/
 *   **Dados**: `products.json` é a fonte da verdade.

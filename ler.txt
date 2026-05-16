@@ -678,9 +678,9 @@ OUT
 Hotmart links total: 219
 src values: { atividades: 219 }
 Sample: [
-  'href="https://go.hotmart.com/K100207827F?src=atividades"',
-  'href="https://go.hotmart.com/H89582344Y?src=atividades"',
-  'href="https://go.hotmart.com/Y89582266A?src=atividades"'
+  'href="https://www.aulagen.com.br/"',
+  'href="https://www.aulagen.com.br/"',
+  'href="https://www.aulagen.com.br/"'
 ]
 Perfeito! Os variants estão todos corretos - 219 links Hotmart com ?src=atividades (cada variant tem seu próprio src).
 
@@ -881,7 +881,7 @@ OUT
 <exit_code>0</exit_code>
 
 <output>
-To https://github.com/planodeaulapronto/planodeaulapronto.git
+To https://planodeaulapronto.github.io/
    ff4c9ac..ffd5e4a  main -> main
 </output>
 Push principal concluído! Agora os 3 sub-repos em paralelo.
@@ -917,7 +917,7 @@ OUT
 <exit_code>0</exit_code>
 
 <output>
-To https://github.com/planodeaulapronto/atividades-bncc-2026.git
+To https://planodeaulapronto.github.io/
    251296a..f4f6c3a  main -> main
 </output>
 TaskOutput task: "b1b9af3"
@@ -933,7 +933,7 @@ OUT
 <exit_code>0</exit_code>
 
 <output>
-To https://github.com/planodeaulapronto/planejamento-educacao-infantil-2026.git
+To https://planodeaulapronto.github.io/
    ce0ba9d..1626d45  main -> main
 </output>
 TaskOutput task: "b7fe78f"
@@ -949,7 +949,7 @@ OUT
 <exit_code>0</exit_code>
 
 <output>
-To https://github.com/planodeaulapronto/avaliacoes-ensino-fundamental-bncc.git
+To https://planodeaulapronto.github.io/
    cc120b9..91e8eff  main -> main
 </output>
 Todos os 4 pushes concluídos com sucesso!

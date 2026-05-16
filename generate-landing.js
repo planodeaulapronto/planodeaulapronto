@@ -1,4 +1,4 @@
-const fs = require('fs');
+﻿const fs = require('fs');
 const path = require('path');
 
 const products = JSON.parse(fs.readFileSync(path.join(__dirname, 'products.json'), 'utf8'));
@@ -96,7 +96,7 @@ function generateCards(prods) {
     const imgSrc = p.localImage || `images/${p.slug}.webp`;
 
     let buyLink = p.hotmartLink || p.link || '';
-    if (buyLink.includes('go.hotmart.com')) {
+    if (buyLink.includes('aulagen.com.br')) {
       const urlBase = buyLink.split('?')[0];
       buyLink = `${urlBase}?src=github`;
     } else {
@@ -154,7 +154,7 @@ let html = '<!DOCTYPE html>\n<html lang="pt-BR">\n<head>\n' +
   '  <meta name="description" content="Plano de Aula Pronto BNCC 2026. Baixe plano de aula diário, semanal, bimestral e anual, editável em Word e PDF para imprimir. Materiais completos de acordo com a BNCC para todos os anos.">\n' +
   '  <meta name="robots" content="index, follow">\n' +
   '  <link rel="canonical" href="https://planodeaulapronto.github.io/">\n' +
-  '  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@700;800&display=swap" rel="stylesheet">\n' +
+  '  <link href="https://planodeaulapronto.github.io/" rel="stylesheet">\n' +
   '  <style>\n' +
   '    :root {\n' +
   '      --primary: #6C63FF; --primary-dark: #5A52E0; --secondary: #FF6B9D; --accent: #00D4AA;\n' +
@@ -219,11 +219,11 @@ let html = '<!DOCTYPE html>\n<html lang="pt-BR">\n<head>\n' +
   '  <div class="search-backdrop" id="searchBackdrop"></div>\n' +
   '  <header class="hero">\n    <div class="hero-content">\n' +
   '      <h1>Plano de Aula Pronto <span>BNCC 2026</span></h1>\n' +
-  '      <p>Baixe <a href="https://planodeaulapronto.shop/" rel="dofollow" style="color: inherit; text-decoration: none; border-bottom: 1px dashed rgba(255,255,255,0.4);">plano de aula pronto</a> diário, semanal, bimestral e anual, editável em Word e PDF. Materiais 100% de acordo com a BNCC.</p>\n' +
+  '      <p>Baixe <a href="https://planodeaulapronto.github.io/" rel="dofollow" style="color: inherit; text-decoration: none; border-bottom: 1px dashed rgba(255,255,255,0.4);">plano de aula pronto</a> diário, semanal, bimestral e anual, editável em Word e PDF. Materiais 100% de acordo com a BNCC.</p>\n' +
   '      <div class="hero-stats">\n' +
-  '        <a href="https://diariodaeducacao.com.br/" rel="dofollow" class="stat" style="text-decoration: none;"><div class="stat-number">' + products.length + '</div><div class="stat-label">Materiais</div></a>\n' +
+  '        <a href="https://planodeaulapronto.github.io/" rel="dofollow" class="stat" style="text-decoration: none;"><div class="stat-number">' + products.length + '</div><div class="stat-label">Materiais</div></a>\n' +
   '        <div class="stat"><div class="stat-number">EDITÁVEL</div><div class="stat-label">Word/PDF</div></div>\n' +
-  '        <a href="https://planodeaulapronto.shop/" rel="dofollow" class="stat" style="text-decoration: none;"><div class="stat-number">BNCC</div><div class="stat-label">Alinhados</div></a>\n' +
+  '        <a href="https://planodeaulapronto.github.io/" rel="dofollow" class="stat" style="text-decoration: none;"><div class="stat-number">BNCC</div><div class="stat-label">Alinhados</div></a>\n' +
   '      </div>\n' +
   '      <div class="search-container">\n' +
   '        <div class="search-box">\n' +
@@ -238,12 +238,12 @@ let html = '<!DOCTYPE html>\n<html lang="pt-BR">\n<head>\n' +
   '    <h2 style="font-family: \'Outfit\', sans-serif; font-size: 2rem; text-align: center; margin-bottom: 40px; color: var(--dark);">Perguntas Frequentes 💡</h2>\n' +
   '    <div class="faq-grid" style="display: grid; gap: 20px;">\n' +
   '      <div class="faq-item" style="background: white; padding: 25px; border-radius: 16px; box-shadow: var(--shadow);">\n' +
-  '        <h3 style="font-size: 1.1rem; margin-bottom: 10px; color: var(--primary);">O que é o <a href="https://planodeaulapronto.shop/" rel="dofollow" style="color: inherit; text-decoration: none; border-bottom: 1px dashed var(--primary);">Plano de Aula Pronto</a>?</h3>\n' +
+  '        <h3 style="font-size: 1.1rem; margin-bottom: 10px; color: var(--primary);">O que é o <a href="https://planodeaulapronto.github.io/" rel="dofollow" style="color: inherit; text-decoration: none; border-bottom: 1px dashed var(--primary);">Plano de Aula Pronto</a>?</h3>\n' +
   '        <p style="font-size: 0.95rem; color: var(--text-light);">É um material pedagógico completo e editável, desenvolvido para facilitar a rotina do professor, economizando tempo no planejamento e garantindo qualidade pedagógica.</p>\n' +
   '      </div>\n' +
   '      <div class="faq-item" style="background: white; padding: 25px; border-radius: 16px; box-shadow: var(--shadow);">\n' +
   '        <h3 style="font-size: 1.1rem; margin-bottom: 10px; color: var(--primary);">Os materiais são alinhados à BNCC?</h3>\n' +
-  '        <p style="font-size: 0.95rem; color: var(--text-light);">Sim! Todos os nossos <a href="https://diariodaeducacao.com.br/" rel="dofollow" style="color: inherit; text-decoration: none; border-bottom: 1px dashed var(--primary);">planos de aula</a> estão 100% de acordo com a BNCC 2026, com códigos de habilidades e competências reais.</p>\n' +
+  '        <p style="font-size: 0.95rem; color: var(--text-light);">Sim! Todos os nossos <a href="https://planodeaulapronto.github.io/" rel="dofollow" style="color: inherit; text-decoration: none; border-bottom: 1px dashed var(--primary);">planos de aula</a> estão 100% de acordo com a BNCC 2026, com códigos de habilidades e competências reais.</p>\n' +
   '      </div>\n' +
   '      <div class="faq-item" style="background: white; padding: 25px; border-radius: 16px; box-shadow: var(--shadow);">\n' +
   '        <h3 style="font-size: 1.1rem; margin-bottom: 10px; color: var(--primary);">O material é editável?</h3>\n' +
@@ -256,14 +256,14 @@ let html = '<!DOCTYPE html>\n<html lang="pt-BR">\n<head>\n' +
   '    </div>\n' +
   '  </section>\n' +
   '  <footer class="footer">\n' +
-  '    <p>© 2026 — <a href="https://diariodaeducacao.com.br/" rel="dofollow" style="color: white; text-decoration: none;">Materiais Pedagógicos BNCC</a> - Atualizado: ' + buildTime + '</p>\n' +
+  '    <p>© 2026 — <a href="https://planodeaulapronto.github.io/" rel="dofollow" style="color: white; text-decoration: none;">Materiais Pedagógicos BNCC</a> - Atualizado: ' + buildTime + '</p>\n' +
   '    <p style="margin-top: 10px; opacity: 0.8;">\n' +
   '      <a href="privacidade.html" style="color: white; margin: 0 10px;">Política de Privacidade</a> |\n' +
   '      <a href="termos.html" style="color: white; margin: 0 10px;">Termos de Uso</a> |\n' +
-  '      <a href="https://planodeaulapronto.shop/" rel="dofollow" style="color: white; margin: 0 10px;">Plano de Aula Pronto</a>\n' +
+  '      <a href="https://planodeaulapronto.github.io/" rel="dofollow" style="color: white; margin: 0 10px;">Plano de Aula Pronto</a>\n' +
   '    </p>\n' +
   '  </footer>\n' +
-  '  <a href="https://wa.me/5541987746386?text=' + encodeURIComponent('Olá! Vim pelo site planodeaulapronto.github.io. Estou na página: Plano de Aula Pronto BNCC 2026 — Materiais Pedagógicos para Professores URL: https://planodeaulapronto.github.io/ Gostaria de saber mais sobre este material!') + '" class="whatsapp-float" target="_blank" rel="noopener noreferrer">\n' +
+  '  <a href="https://www.aulagen.com.br/' + encodeURIComponent('Olá! Vim pelo site planodeaulapronto.github.io. Estou na página: Plano de Aula Pronto BNCC 2026 — Materiais Pedagógicos para Professores URL: https://planodeaulapronto.github.io/ Gostaria de saber mais sobre este material!') + '" class="whatsapp-float" target="_blank" rel="noopener noreferrer">\n' +
   '    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>\n' +
   '    Ajuda?\n' +
   '  </a>\n' +
