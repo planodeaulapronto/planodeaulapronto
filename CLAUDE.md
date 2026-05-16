@@ -44,7 +44,7 @@ O site `https://planodeaulapronto.github.io/` e um portal estatico no GitHub Pag
 - Injetado banner sticky AulaGen no topo de todos os artigos.
 - Removidos links externos antigos dos artigos.
 - Convertidas imagens externas antigas para caminhos locais quando possivel.
-- Removidas mencoes de `planodeaulapronto.github.io`.
+- Removidas mencoes e hotlinks antigos para `diariodaeducacao.com.br`.
 - Padronizado o email de contato.
 
 ### Home
@@ -62,15 +62,61 @@ O site `https://planodeaulapronto.github.io/` e um portal estatico no GitHub Pag
 
 ### Produtos
 
-- Banner AulaGen removido das paginas de produto para nao concorrer com a venda dos materiais.
+- Banner sticky AulaGen no topo de todas as paginas de produto.
+- O banner AulaGen nao substitui nem altera a venda principal dos produtos.
 - Restaurados os links Hotmart corretos dos 219 produtos no `products.json`.
 - Restaurados os links Hotmart corretos em 438 paginas HTML de produto:
   - `/produto/*.html`
   - `/produtos/*.html`
 - Restaurados `Offer.url` e `buy-btn-large` usando o historico Git exato de cada arquivo/produto.
+- `Offer.url` do schema `Product` deve continuar apontando para Hotmart, nunca para AulaGen.
 - Corrigido bug visual do SVG/WhatsApp gigante com CSS de seguranca:
   - `svg:not([width]):not([height]) { max-width:24px; max-height:24px; }`
 - Mantida estrutura de paginas de produto com CTA principal para compra via Hotmart.
+
+### Schema.org
+
+- Otimizados schemas em 5.782 paginas principais.
+- Cada pagina processada tem um unico bloco `SCHEMA-OPTIMIZED` com JSON-LD `@graph`.
+- Home:
+  - `EducationalOrganization`
+  - `WebSite`
+  - `CollectionPage`
+  - `ItemList`
+  - `BreadcrumbList`
+- Artigos:
+  - `BlogPosting`
+  - `WebPage`
+  - `FAQPage`
+  - `BreadcrumbList`
+- Produtos:
+  - `Product`
+  - `Offer`
+  - `AggregateRating`
+  - `Review`
+  - `FAQPage`
+  - `BreadcrumbList`
+- Cidades/concursos:
+  - `Article`
+  - `WebPage`
+  - `Service`
+  - `City`
+  - `FAQPage`
+  - `BreadcrumbList`
+- Nao criar `LocalBusiness` falso para cidades sem endereco fisico real. Para SEO local de cidade, usar `City`, `Place`, `Service` e `areaServed`.
+- FAQPage deve ter perguntas visiveis na pagina via bloco `SCHEMA-FAQ-VISIBLE`.
+
+### Responsividade
+
+- Aplicado `responsive_hotfix.py` em 5.780 paginas.
+- Ajustes mobile:
+  - evita overflow horizontal;
+  - limita SVGs gigantes;
+  - ajusta grids de produtos;
+  - ajusta banner AulaGen;
+  - melhora leitura em celular;
+  - ajusta cards, botoes, tabelas e menus.
+- Testado com Chrome headless em telas mobile e desktop para home, artigo, produto e cidade.
 
 ### Concursos por cidade
 
@@ -111,9 +157,15 @@ O site `https://planodeaulapronto.github.io/` e um portal estatico no GitHub Pag
 - `build_cidades.py`
   - Gera paginas programaticas de concursos por cidade.
 - `inject_banner.py`
-  - Injeta banner sticky AulaGen em artigos, home, mapa e paginas de cidade/concurso.
-  - Nao injeta banner em produtos para preservar o funil Hotmart.
-  - Tambem corrige SVGs sem `width`/`height`.
+  - Script antigo de injecao parcial de banner e correcao de SVG.
+- `sitewide_banner.py`
+  - Injeta banner sticky AulaGen em todos os HTMLs do site.
+  - Nao altera Hotmart, `buy-btn-large`, `Offer.url` ou links de compra.
+- `responsive_hotfix.py`
+  - Injeta CSS responsivo global nas paginas principais.
+- `schema_optimization.py`
+  - Remove JSON-LD antigo e injeta `@graph` schema.org otimizado por tipo de pagina.
+  - Mantem `Product.offers.url` apontando para Hotmart.
 
 ## Fluxo recomendado de manutencao
 
@@ -123,8 +175,13 @@ Depois de editar produtos, artigos ou paginas programaticas:
 cd C:\Users\tonib\Desktop\planodeaulapronto-repo
 $env:PYTHONIOENCODING='utf-8'
 python build_cidades.py
-python inject_banner.py
+python sitewide_banner.py
+python responsive_hotfix.py
+python schema_optimization.py
+python sitewide_banner.py
 ```
+
+Observacao: rode `sitewide_banner.py` novamente depois de `schema_optimization.py` sempre que quiser garantir o banner no topo de absolutamente todas as paginas.
 
 Depois validar:
 
@@ -133,7 +190,7 @@ git status --short
 (Select-String -Path sitemap.xml -Pattern '<loc>' | Measure-Object).Count
 Select-String -Path index.html -Pattern 'AULAGEN-STICKY-BANNER'
 Select-String -Path artigos\aula-sobre-racismo-como-abordar-o-tema-na-educacao.html -Pattern 'AULAGEN-STICKY-BANNER'
-Select-String -Path produto\plano-de-aula-fisica-ensino-medio.html -Pattern 'go.hotmart.com|buy-btn-large|svg-bugfix'
+Select-String -Path produto\plano-de-aula-fisica-ensino-medio.html -Pattern 'AULAGEN-STICKY-BANNER|go.hotmart.com|buy-btn-large|svg-bugfix|SCHEMA-OPTIMIZED'
 Select-String -Path sao-paulo\concurso-professor.html -Pattern 'AULAGEN-STICKY-BANNER'
 ```
 
@@ -142,7 +199,34 @@ Validacao critica dos produtos:
 ```powershell
 Select-String -Path products.json -Pattern 'go.hotmart.com' | Measure-Object
 Select-String -Path produto\*.html,produtos\*.html -Pattern 'class="buy-btn-large"' | Measure-Object
-Select-String -Path produto\*.html,produtos\*.html -Pattern 'href="https://www.aulagen.com.br/"' | Measure-Object
+Select-String -Path produto\*.html,produtos\*.html -Pattern 'href="https://go.hotmart.com' | Measure-Object
+```
+
+Validacao de schema:
+
+```powershell
+@'
+from pathlib import Path
+import re,json
+rx=re.compile(r'<script[^>]+type=["\\']application/ld\\+json["\\'][^>]*>(.*?)</script>', re.I|re.S)
+errors=[]
+for p in Path('.').rglob('*.html'):
+    s=p.read_text(encoding='utf-8',errors='ignore')
+    if 'SCHEMA-OPTIMIZED start' not in s:
+        continue
+    scripts=rx.findall(s)
+    if len(scripts)!=1:
+        errors.append((str(p),len(scripts)))
+        continue
+    try:
+        data=json.loads(scripts[0])
+        assert data.get('@context')=='https://schema.org'
+        assert '@graph' in data
+    except Exception as e:
+        errors.append((str(p),str(e)))
+print('schema_errors=', len(errors))
+print(errors[:10])
+'@ | python -
 ```
 
 ## Deploy
