@@ -29,7 +29,23 @@ BANNER = """<!-- AULAGEN-STICKY-BANNER start -->
 """
 
 
+# NAO injetar banner em arquivos que devem permanecer como texto puro
+# (ex.: arquivos de verificacao Google) — quebra a verificacao.
+SKIP_PATTERNS = (
+    re.compile(r"^google[0-9a-f]+\.html$", re.I),  # google-site-verification
+    re.compile(r"^BingSiteAuth\.xml$", re.I),
+    re.compile(r"^IndexNow.*\.txt$", re.I),
+)
+
+
+def should_skip(path: Path) -> bool:
+    name = path.name
+    return any(p.match(name) for p in SKIP_PATTERNS)
+
+
 def patch(path: Path) -> bool:
+    if should_skip(path):
+        return False
     raw = path.read_text(encoding="utf-8-sig", errors="ignore")
     before = raw
     raw = re.sub(r"\s*<!-- AULAGEN-STICKY-BANNER start -->.*?<!-- AULAGEN-STICKY-BANNER end -->\s*", "\n", raw, flags=re.I | re.S)
@@ -47,13 +63,18 @@ def patch(path: Path) -> bool:
 def main() -> None:
     files = sorted(ROOT.rglob("*.html"))
     changed = 0
+    skipped = 0
     for i, path in enumerate(files, 1):
+        if should_skip(path):
+            skipped += 1
+            continue
         if patch(path):
             changed += 1
         if i % 1000 == 0:
             print(f"...{i}/{len(files)}")
     print(f"banner_targets={len(files)}")
     print(f"banner_changed={changed}")
+    print(f"banner_skipped={skipped}")
 
 
 if __name__ == "__main__":
